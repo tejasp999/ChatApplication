@@ -19,6 +19,7 @@
 		B730D56C20365F6C00249DE8 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B730D56B20365F6C00249DE8 /* ChannelViewController.swift */; };
 		B730D56E2036680F00249DE8 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B730D56D2036680F00249DE8 /* GradientView.swift */; };
 		B730D5702036783B00249DE8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B730D56F2036783B00249DE8 /* LoginViewController.swift */; };
+		B78DBC9320427EDE000D7A56 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78DBC9220427EDE000D7A56 /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		B730D56B20365F6C00249DE8 /* ChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
 		B730D56D2036680F00249DE8 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B730D56F2036783B00249DE8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B78DBC9220427EDE000D7A56 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		C33BC18CE1B546C85986DE50 /* Pods_SmackApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmackApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 		B730D5432036521800249DE8 = {
 			isa = PBXGroup;
 			children = (
+				B78DBC9120427EC4000D7A56 /* Services */,
 				B71FABE120424C0300C9B046 /* Utilities */,
 				B730D56820365F2E00249DE8 /* Model */,
 				B730D56720365F2800249DE8 /* View */,
@@ -139,6 +142,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B78DBC9120427EC4000D7A56 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B78DBC9220427EDE000D7A56 /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		DDB4A865DDE585451D21E928 /* Pods */ = {
@@ -289,6 +300,7 @@
 				B730D5702036783B00249DE8 /* LoginViewController.swift in Sources */,
 				B730D5502036521800249DE8 /* AppDelegate.swift in Sources */,
 				B730D56A20365F5100249DE8 /* ChatViewController.swift in Sources */,
+				B78DBC9320427EDE000D7A56 /* AuthService.swift in Sources */,
 				B730D56E2036680F00249DE8 /* GradientView.swift in Sources */,
 				B71FABE520424C4400C9B046 /* CreateAccountViewController.swift in Sources */,
 				B71FABE320424C1300C9B046 /* Constants.swift in Sources */,
