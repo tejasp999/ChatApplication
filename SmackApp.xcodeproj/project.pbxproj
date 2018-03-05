@@ -10,6 +10,7 @@
 		1BCB3EF05368FE6A8A8BADBC /* Pods_SmackApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33BC18CE1B546C85986DE50 /* Pods_SmackApp.framework */; };
 		B71FABE320424C1300C9B046 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71FABE220424C1300C9B046 /* Constants.swift */; };
 		B71FABE520424C4400C9B046 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71FABE420424C4400C9B046 /* CreateAccountViewController.swift */; };
+		B7262290204D020B008E0BE9 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B726228F204D020B008E0BE9 /* RoundedButton.swift */; };
 		B730D5502036521800249DE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B730D54F2036521800249DE8 /* AppDelegate.swift */; };
 		B730D5552036521800249DE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B730D5532036521800249DE8 /* Main.storyboard */; };
 		B730D5572036521800249DE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B730D5562036521800249DE8 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		B59ECD9632F55A8D33BFDDB5 /* Pods-SmackApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmackApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmackApp/Pods-SmackApp.release.xcconfig"; sourceTree = "<group>"; };
 		B71FABE220424C1300C9B046 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B71FABE420424C4400C9B046 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		B726228F204D020B008E0BE9 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		B730D54C2036521800249DE8 /* SmackApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmackApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B730D54F2036521800249DE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B730D5542036521800249DE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				B730D56D2036680F00249DE8 /* GradientView.swift */,
+				B726228F204D020B008E0BE9 /* RoundedButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B730D5702036783B00249DE8 /* LoginViewController.swift in Sources */,
+				B7262290204D020B008E0BE9 /* RoundedButton.swift in Sources */,
 				B730D5502036521800249DE8 /* AppDelegate.swift in Sources */,
 				B730D56A20365F5100249DE8 /* ChatViewController.swift in Sources */,
 				B78DBC9320427EDE000D7A56 /* AuthService.swift in Sources */,
@@ -445,6 +449,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YFLH7887SU;
 				INFOPLIST_FILE = SmackApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Teja.SmackApp;
@@ -463,6 +468,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YFLH7887SU;
 				INFOPLIST_FILE = SmackApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Teja.SmackApp;

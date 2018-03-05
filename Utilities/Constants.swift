@@ -11,6 +11,7 @@ import Foundation
 typealias CompletionHandler = (_ Success : Bool) -> ()
 let BASE_URL = "https://chatappslack.herokuapp.com/v1/"
 let Register_URL = "\(BASE_URL)account/register"
+let Login_URL = "\(BASE_URL)account/login"
 let CREATE_ACCOUNT = "createAccount"
 let UN_WIND = "unwindToChannelVC"
 
@@ -18,3 +19,5 @@ let UN_WIND = "unwindToChannelVC"
 let LOGGED_IN = "loggedIn"
 let TOKEN_KEY = "token"
 let USER_EMAIL = "userEmail"
+//Headers
+let HEADER = ["Content-Type":"application/json; charset = utf-8"]
