@@ -22,7 +22,12 @@ class CreateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    override func viewDidAppear(_ animated : Bool){
+        if UserService.instance.avatarName != ""{
+            profileImg.image = UIImage(named : UserService.instance.avatarName)
+            avatarName = UserService.instance.avatarName
+        }
+    }
     
     @IBAction func createAccountPressed(_ sender: Any) {
         guard let name = userNameField.text, userNameField.text != "" else {return}
@@ -47,6 +52,7 @@ class CreateAccountViewController: UIViewController {
     }
     
     @IBAction func chooseAvatar(_ sender: Any) {
+        performSegue(withIdentifier: AVATAR_PICKER, sender: nil)
     }
     
     

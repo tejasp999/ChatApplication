@@ -13,6 +13,7 @@ let BASE_URL = "https://chatappslack.herokuapp.com/v1/"
 let Register_URL = "\(BASE_URL)account/register"
 let Login_URL = "\(BASE_URL)account/login"
 let Add_User_URL = "\(BASE_URL)user/add"
+let AVATAR_PICKER = "avatarPicker"
 
 let CREATE_ACCOUNT = "createAccount"
 let UN_WIND = "unwindToChannelVC"
