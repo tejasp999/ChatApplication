@@ -35,6 +35,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-30" y="-259"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="Ffy-jD-0Hi">
@@ -197,6 +198,7 @@
                     </view>
                     <connections>
                         <outlet property="loginBtn" destination="UlD-Va-PkY" id="zN3-oM-hvy"/>
+                        <outlet property="userImage" destination="6rK-AO-lFy" id="GOj-QJ-xXI"/>
                         <segue destination="4BH-mx-pM9" kind="show" identifier="loginController" id="YPS-ai-flP"/>
                     </connections>
                 </viewController>
