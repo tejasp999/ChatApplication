@@ -14,6 +14,7 @@
 		B71FABE320424C1300C9B046 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71FABE220424C1300C9B046 /* Constants.swift */; };
 		B71FABE520424C4400C9B046 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71FABE420424C4400C9B046 /* CreateAccountViewController.swift */; };
 		B7262290204D020B008E0BE9 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B726228F204D020B008E0BE9 /* RoundedButton.swift */; };
+		B72850C1205B1494002A422C /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72850C0205B1494002A422C /* RoundedImage.swift */; };
 		B730D5502036521800249DE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B730D54F2036521800249DE8 /* AppDelegate.swift */; };
 		B730D5552036521800249DE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B730D5532036521800249DE8 /* Main.storyboard */; };
 		B730D5572036521800249DE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B730D5562036521800249DE8 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		B71FABE220424C1300C9B046 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B71FABE420424C4400C9B046 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		B726228F204D020B008E0BE9 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		B72850C0205B1494002A422C /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
 		B730D54C2036521800249DE8 /* SmackApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmackApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B730D54F2036521800249DE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B730D5542036521800249DE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				B730D56D2036680F00249DE8 /* GradientView.swift */,
 				B726228F204D020B008E0BE9 /* RoundedButton.swift */,
 				B719FE25204E2A8C00ACA825 /* AvatarCell.swift */,
+				B72850C0205B1494002A422C /* RoundedImage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				B719FE24204E283700ACA825 /* AvatarPickerViewController.swift in Sources */,
 				B719FE22204E1E7B00ACA825 /* UserService.swift in Sources */,
 				B71FABE520424C4400C9B046 /* CreateAccountViewController.swift in Sources */,
+				B72850C1205B1494002A422C /* RoundedImage.swift in Sources */,
 				B719FE26204E2A8C00ACA825 /* AvatarCell.swift in Sources */,
 				B71FABE320424C1300C9B046 /* Constants.swift in Sources */,
 				B730D56C20365F6C00249DE8 /* ChannelViewController.swift in Sources */,

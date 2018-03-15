@@ -15,6 +15,12 @@ let Login_URL = "\(BASE_URL)account/login"
 let Add_User_URL = "\(BASE_URL)user/add"
 let AVATAR_PICKER = "avatarPicker"
 
+//Colors
+let placeHolderColor = #colorLiteral(red: 0.2588235294, green: 0.3294117647, blue: 0.7254901961, alpha: 1)
+
+//Notifications
+let NOTIFY_DATA_CHANGE = Notification.Name("notifyUserDataChanged")
+
 let CREATE_ACCOUNT = "createAccount"
 let UN_WIND = "unwindToChannelVC"
 
