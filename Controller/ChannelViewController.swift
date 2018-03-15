@@ -18,10 +18,10 @@ class ChannelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 70
-        NotificationCenter.default.addObserver(self, selector: #selector(ChannelViewController.dataChanged(notif:)), name: NOTIFY_DATA_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelViewController.dataChanged(_:)), name: NOTIFY_DATA_CHANGE, object: nil)
         // Do any additional setup after loading the view.
     }
-    @objc func dataChanged(notif : Notification)  {
+    @objc func dataChanged(_ notif : Notification)  {
         if AuthService.instance.isLoggedIn{
             loginBtn.setTitle(UserService.instance.name, for: .normal)
             userImage.image = UIImage(named: UserService.instance.avatarName)
@@ -33,6 +33,12 @@ class ChannelViewController: UIViewController {
         }
     }
     @IBAction func loginBtnPressed(_ sender: Any) {
-        performSegue(withIdentifier: "loginController", sender: nil)
+        if AuthService.instance.isLoggedIn{
+            let profileVC  = ProfileViewController()
+            profileVC.modalPresentationStyle = .custom
+            present(profileVC, animated: true, completion: nil)
+        }else{
+            performSegue(withIdentifier: "loginController", sender: nil)
+        }
     }
 }
