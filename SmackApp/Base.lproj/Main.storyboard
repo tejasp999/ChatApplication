@@ -246,6 +246,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginBtnPressed:" destination="4BH-mx-pM9" eventType="touchUpInside" id="9Um-lx-U15"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="MMh-Gt-bha">
                                 <rect key="frame" x="61" y="160" width="253" height="97"/>
@@ -288,6 +291,10 @@
                                     <action selector="createAccountBtnPressed:" destination="4BH-mx-pM9" eventType="touchUpInside" id="udD-qM-XCI"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f70-YN-deb">
+                                <rect key="frame" x="169" y="215" width="37" height="37"/>
+                                <color key="color" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -298,8 +305,10 @@
                             <constraint firstItem="wBE-lT-MzD" firstAttribute="centerX" secondItem="do7-4X-8Mo" secondAttribute="centerX" id="N4M-yB-5Jp"/>
                             <constraint firstItem="fxw-bk-ZIu" firstAttribute="top" secondItem="cUc-6v-ui8" secondAttribute="bottom" constant="25" id="TWn-zI-LLJ"/>
                             <constraint firstItem="wBE-lT-MzD" firstAttribute="top" secondItem="u6g-uP-FzJ" secondAttribute="bottom" id="XsD-ms-pdQ"/>
+                            <constraint firstItem="f70-YN-deb" firstAttribute="centerX" secondItem="do7-4X-8Mo" secondAttribute="centerX" id="fzp-tX-od7"/>
                             <constraint firstItem="u6g-uP-FzJ" firstAttribute="top" secondItem="MMh-Gt-bha" secondAttribute="bottom" constant="45" id="gTt-3d-1Cc"/>
                             <constraint firstItem="FGY-js-wvW" firstAttribute="top" secondItem="cUc-6v-ui8" secondAttribute="bottom" constant="60" id="hDI-Ww-i86"/>
+                            <constraint firstItem="f70-YN-deb" firstAttribute="centerY" secondItem="do7-4X-8Mo" secondAttribute="centerY" constant="-100" id="hw9-W4-N60"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fxw-bk-ZIu" secondAttribute="trailing" constant="15" id="jQW-aH-jpo"/>
                             <constraint firstItem="MMh-Gt-bha" firstAttribute="centerX" secondItem="do7-4X-8Mo" secondAttribute="centerX" id="qXj-G4-o95"/>
                             <constraint firstItem="u6g-uP-FzJ" firstAttribute="width" secondItem="MMh-Gt-bha" secondAttribute="width" id="rVK-1g-huV"/>
@@ -308,6 +317,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="passwordField" destination="aBQ-5R-1t4" id="XMo-1u-P2p"/>
+                        <outlet property="spinner" destination="f70-YN-deb" id="8E8-Zk-cZl"/>
+                        <outlet property="userNameField" destination="YmC-cE-2AZ" id="dxn-iy-o5P"/>
                         <segue destination="Arj-du-g9V" kind="show" identifier="createAccount" id="sjQ-8M-9rW"/>
                     </connections>
                 </viewController>

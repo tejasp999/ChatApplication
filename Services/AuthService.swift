@@ -44,10 +44,11 @@ class AuthService{
         let body : [String: Any] = ["email":lowercasedemail,"password":password]
         Alamofire.request(Register_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseString { (response) in
             if response.result.error == nil{
+                print("Inside Register")
                 completion(true)
             }else{
                 completion(false)
-                debugPrint(response.result.error as? Any)
+                //debugPrint(response.result.error as? Any)
             }
         }
     }
@@ -56,15 +57,7 @@ class AuthService{
         let body : [String: Any] = ["email":lowercasedemail,"password":password]
         Alamofire.request(Login_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
             if response.result.error == nil{
-                //                if let json = response.result.value as? Dictionary<String,Any>{
-                //                    if let email = json["user"] as? String{
-                //                        self.userEmail = email
-                //                    }
-                //                    if let token = json["token"] as? String{
-                //                        self.authToken = token
-                //                    }
-                //                }
-                //                completion(true)
+                print("Inside login")
                 //SwiftyJSON
                 guard let data = response.data else { return }
                 let json = JSON(data)
@@ -74,30 +67,52 @@ class AuthService{
                 completion(true)
             }else{
                 completion(false)
-                debugPrint(response.result.error as? Any)
+               // debugPrint(response.result.error as? Any)
             }
         }
     }
     func createUser(name : String, email : String, avatarName : String, avatarColor : String, completion : @escaping CompletionHandler){
-        let lowercaseEmail = email.lowercased()
-        let body : [String: Any] = ["name":name,"email":lowercaseEmail,"avatarName":avatarName,"avatarColor":avatarColor]
-        let header = ["Authorization":"Bearer\(AuthService.instance.authToken)",
-            "Content":"application/json; charset=utf-8"]
-        Alamofire.request(Add_User_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+        let lowerCaseEmail = email.lowercased()
+        let body: [String: Any] = [
+            "name": name,
+            "email": lowerCaseEmail,
+            "avatarName": avatarName,
+            "avatarColor": avatarColor
+        ]
+        //let body : [String: Any] = ["name":name,"email":lowercaseEmail,"avatarName":avatarName,"avatarColor":avatarColor]
+        Alamofire.request(Add_User_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
             if response.result.error == nil{
+                print("Inside createuser")
                 guard let data = response.data else {return}
-                let json = JSON(data)
-                let id = json["_id"].stringValue
-                let name = json["name"].stringValue
-                let color = json["avatarColor"].stringValue
-                let avatarName = json["avatarName"].stringValue
-                let email = json["email"].stringValue
-                UserService.instance.setUserData(id: id, color: color, avatarName: avatarName, email: email, name: name)
+                self.setUserData(data: data)
                 completion(true)
             }else{
                 completion(false)
             }
         }
+    }
+    
+    func getUserDetails(completion: @escaping CompletionHandler){
+        print("the user data is \(USER_DATA_URL)\(userEmail)")
+        Alamofire.request("\(USER_DATA_URL)\(userEmail)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
+            print("the user data inside is",response)
+            if response.result.error == nil{
+                guard let data = response.data else {return}
+                self.setUserData(data: data)
+                completion(true)
+            }else{
+                completion(false)
+            }
+        }
+    }
+    func setUserData(data: Data){
+        let json = JSON(data)
+        let id = json["_id"].stringValue
+        let name = json["name"].stringValue
+        let color = json["avatarColor"].stringValue
+        let avatarName = json["avatarName"].stringValue
+        let email = json["email"].stringValue
+        UserService.instance.setUserData(id: id, color: color, avatarName: avatarName, email: email, name: name)
     }
     
 }

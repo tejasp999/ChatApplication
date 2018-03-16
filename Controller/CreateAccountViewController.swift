@@ -18,11 +18,12 @@ class CreateAccountViewController: UIViewController {
     
     //
     var avatarName = "profileDefault"
-    var avatarColor = "[0.4,0.4,0.4,1]"
+    var avatarColor = "[0.5, 0.5, 0.5, 1]"
     var bgColor : UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpView()
     }
     override func viewDidAppear(_ animated : Bool){
         if UserService.instance.avatarName != ""{
@@ -46,8 +47,9 @@ class CreateAccountViewController: UIViewController {
                     if success{
                         AuthService.instance.createUser(name: name, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success) in
                             if success{
-                                self.spinnerView.isHidden = true
+                                print("New user registered")
                                 self.spinnerView.stopAnimating()
+                                self.spinnerView.isHidden = true
                                 print(UserService.instance.name,UserService.instance.avatarName)
                                 self.performSegue(withIdentifier: UN_WIND, sender: nil)
                                 NotificationCenter.default.post(name: NOTIFY_DATA_CHANGE, object: nil)
@@ -55,8 +57,6 @@ class CreateAccountViewController: UIViewController {
                         })
                     }
                 })
-                print("New user registered")
-                
             }
         }
         
@@ -71,8 +71,8 @@ class CreateAccountViewController: UIViewController {
         let r = CGFloat(arc4random_uniform(255)) / 255
         let g = CGFloat(arc4random_uniform(255)) / 255
         let b = CGFloat(arc4random_uniform(255)) / 255
-        bgColor = UIColor(red: r, green: g, blue: b, alpha: 1.0)
-        avatarColor = "[\(r),\(g),\(b), 1]"
+        bgColor = UIColor(red: r, green: g, blue: b, alpha: 1)
+        avatarColor = "[\(r), \(g), \(b), 1]"
         UIView.animate(withDuration: 0.2){
             self.profileImg.backgroundColor = self.bgColor
         }
@@ -83,12 +83,12 @@ class CreateAccountViewController: UIViewController {
     }
     
     func setUpView(){
-        spinnerView.isHidden = false
+        spinnerView.isHidden = true
         userNameField.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedStringKey.foregroundColor:placeHolderColor])
         emailField.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedStringKey.foregroundColor:placeHolderColor])
         passwordField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedStringKey.foregroundColor:placeHolderColor])
-        let tap = UIGestureRecognizer(target: self, action: #selector(CreateAccountViewController.handleTap))
-        view.addGestureRecognizer(tap)
+        //let tap = UIGestureRecognizer(target: self, action: #selector(CreateAccountViewController.handleTap))
+        //view.addGestureRecognizer(tap)
     }
     @objc func handleTap(){
         view.endEditing(true)
