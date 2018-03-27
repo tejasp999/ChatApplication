@@ -19,7 +19,9 @@ class ChannelViewController: UIViewController {
         super.viewDidLoad()
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 70
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelViewController.dataChanged(_:)), name: NOTIFY_DATA_CHANGE, object: nil)
-        // Do any additional setup after loading the view.
+        MessageService.instance.getChannels { (success) in
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,6 +29,7 @@ class ChannelViewController: UIViewController {
     }
     
     func setUpUserInfo(){
+        //let savedScore = AuthService.instance.isLoggedIn ?? false
         if AuthService.instance.isLoggedIn{
             loginBtn.setTitle(UserService.instance.name, for: .normal)
             userImage.image = UIImage(named: UserService.instance.avatarName)
@@ -47,6 +50,7 @@ class ChannelViewController: UIViewController {
             profileVC.modalPresentationStyle = .custom
             present(profileVC, animated: true, completion: nil)
         }else{
+            AuthService.instance.isLoggedIn = false
             performSegue(withIdentifier: "loginController", sender: nil)
         }
     }

@@ -63,6 +63,7 @@ class AuthService{
                 let json = JSON(data)
                 self.userEmail = json["user"].stringValue
                 self.authToken = json["token"].stringValue
+                //AuthService.instance.authToken = self.authToken
                 self.isLoggedIn = true
                 completion(true)
             }else{
@@ -71,23 +72,30 @@ class AuthService{
             }
         }
     }
-    func createUser(name : String, email : String, avatarName : String, avatarColor : String, completion : @escaping CompletionHandler){
+    func createUser(name: String, email: String, avatarName: String, avatarColor: String, completion: @escaping CompletionHandler) {
+        let header_data = [
+            "Authorization":"Bearer \(AuthService.instance.authToken)",
+            "Content-Type": "application/json; charset=utf-8"
+        ]
         let lowerCaseEmail = email.lowercased()
+        
         let body: [String: Any] = [
             "name": name,
             "email": lowerCaseEmail,
             "avatarName": avatarName,
             "avatarColor": avatarColor
         ]
-        //let body : [String: Any] = ["name":name,"email":lowercaseEmail,"avatarName":avatarName,"avatarColor":avatarColor]
-        Alamofire.request(Add_User_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
-            if response.result.error == nil{
-                print("Inside createuser")
-                guard let data = response.data else {return}
+        
+        Alamofire.request(Add_User_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header_data).responseJSON { (response) in
+            
+            if response.result.error == nil {
+                guard let data = response.data else { return }
                 self.setUserData(data: data)
                 completion(true)
-            }else{
+                
+            } else {
                 completion(false)
+                debugPrint(response.result.error as Any)
             }
         }
     }

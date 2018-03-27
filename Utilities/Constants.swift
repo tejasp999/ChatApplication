@@ -14,6 +14,7 @@ let Register_URL = "\(BASE_URL)account/register"
 let Login_URL = "\(BASE_URL)account/login"
 let Add_User_URL = "\(BASE_URL)user/add"
 let USER_DATA_URL = "\(BASE_URL)/user/byEmail/"
+let Get_Channels_URL = "\(BASE_URL)channel/"
 
 
 let AVATAR_PICKER = "avatarPicker"
