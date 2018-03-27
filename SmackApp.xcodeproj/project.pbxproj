@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1BCB3EF05368FE6A8A8BADBC /* Pods_SmackApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C33BC18CE1B546C85986DE50 /* Pods_SmackApp.framework */; };
+		B7182D29206AC8B900F0F130 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7182D28206AC8B900F0F130 /* ChannelCell.swift */; };
+		B7182D2C206ACD7600F0F130 /* AddChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7182D2A206ACD7600F0F130 /* AddChannelViewController.swift */; };
+		B7182D2D206ACD7600F0F130 /* AddChannelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7182D2B206ACD7600F0F130 /* AddChannelViewController.xib */; };
 		B719FE22204E1E7B00ACA825 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719FE21204E1E7B00ACA825 /* UserService.swift */; };
 		B719FE24204E283700ACA825 /* AvatarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719FE23204E283700ACA825 /* AvatarPickerViewController.swift */; };
 		B719FE26204E2A8C00ACA825 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B719FE25204E2A8C00ACA825 /* AvatarCell.swift */; };
@@ -34,6 +37,9 @@
 /* Begin PBXFileReference section */
 		5CCAA1FC3F17566580F98DFF /* Pods-SmackApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmackApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmackApp/Pods-SmackApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B59ECD9632F55A8D33BFDDB5 /* Pods-SmackApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmackApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmackApp/Pods-SmackApp.release.xcconfig"; sourceTree = "<group>"; };
+		B7182D28206AC8B900F0F130 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		B7182D2A206ACD7600F0F130 /* AddChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelViewController.swift; sourceTree = "<group>"; };
+		B7182D2B206ACD7600F0F130 /* AddChannelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChannelViewController.xib; sourceTree = "<group>"; };
 		B719FE21204E1E7B00ACA825 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		B719FE23204E283700ACA825 /* AvatarPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPickerViewController.swift; sourceTree = "<group>"; };
 		B719FE25204E2A8C00ACA825 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 		B72850C6205B2482002A422C /* NIB */ = {
 			isa = PBXGroup;
 			children = (
+				B7182D2B206ACD7600F0F130 /* AddChannelViewController.xib */,
 				B72850C3205B245D002A422C /* ProfileViewController.xib */,
 			);
 			path = NIB;
@@ -154,6 +161,7 @@
 				B71FABE420424C4400C9B046 /* CreateAccountViewController.swift */,
 				B719FE23204E283700ACA825 /* AvatarPickerViewController.swift */,
 				B72850C2205B245D002A422C /* ProfileViewController.swift */,
+				B7182D2A206ACD7600F0F130 /* AddChannelViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,6 +173,7 @@
 				B726228F204D020B008E0BE9 /* RoundedButton.swift */,
 				B719FE25204E2A8C00ACA825 /* AvatarCell.swift */,
 				B72850C0205B1494002A422C /* RoundedImage.swift */,
+				B7182D28206AC8B900F0F130 /* ChannelCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -260,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B730D55A2036521800249DE8 /* LaunchScreen.storyboard in Resources */,
+				B7182D2D206ACD7600F0F130 /* AddChannelViewController.xib in Resources */,
 				B730D5572036521800249DE8 /* Assets.xcassets in Resources */,
 				B72850C5205B245D002A422C /* ProfileViewController.xib in Resources */,
 				B730D5552036521800249DE8 /* Main.storyboard in Resources */,
@@ -334,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B730D5702036783B00249DE8 /* LoginViewController.swift in Sources */,
+				B7182D29206AC8B900F0F130 /* ChannelCell.swift in Sources */,
 				B7262290204D020B008E0BE9 /* RoundedButton.swift in Sources */,
 				B730D5502036521800249DE8 /* AppDelegate.swift in Sources */,
 				B730D56A20365F5100249DE8 /* ChatViewController.swift in Sources */,
@@ -345,6 +356,7 @@
 				B719FE22204E1E7B00ACA825 /* UserService.swift in Sources */,
 				B71FABE520424C4400C9B046 /* CreateAccountViewController.swift in Sources */,
 				B72850C1205B1494002A422C /* RoundedImage.swift in Sources */,
+				B7182D2C206ACD7600F0F130 /* AddChannelViewController.swift in Sources */,
 				B719FE26204E2A8C00ACA825 /* AvatarCell.swift in Sources */,
 				B71FABE320424C1300C9B046 /* Constants.swift in Sources */,
 				B72850C4205B245D002A422C /* ProfileViewController.swift in Sources */,

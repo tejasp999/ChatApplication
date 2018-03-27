@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ChannelViewController: UIViewController {
-
+class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var channelTableView: UITableView!
     @IBOutlet weak var userImage: RoundedImage!
     @IBOutlet weak var loginBtn: UIButton!
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
@@ -17,11 +18,10 @@ class ChannelViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        channelTableView.delegate = self
+        channelTableView.dataSource = self
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 70
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelViewController.dataChanged(_:)), name: NOTIFY_DATA_CHANGE, object: nil)
-        MessageService.instance.getChannels { (success) in
-            
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,7 +40,23 @@ class ChannelViewController: UIViewController {
             userImage.backgroundColor = UIColor.clear
         }
     }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessageService.instance.channels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as? ChannelCell{
+            let channel = MessageService.instance.channels[indexPath.row]
+            cell.configureCell(channel: channel)
+            return cell
+        }else{
+            return UITableViewCell()
+        }
+    }
     @objc func dataChanged(_ notif : Notification)  {
        setUpUserInfo()
     }
@@ -53,5 +69,10 @@ class ChannelViewController: UIViewController {
             AuthService.instance.isLoggedIn = false
             performSegue(withIdentifier: "loginController", sender: nil)
         }
+    }
+    @IBAction func addChannelPressed(_ sender: Any) {
+        let addChannelVC  = AddChannelViewController()
+        addChannelVC.modalPresentationStyle = .custom
+        present(addChannelVC, animated: true, completion: nil)
     }
 }

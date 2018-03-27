@@ -26,6 +26,9 @@ class ChatViewController: UIViewController {
                 NotificationCenter.default.post(name: NOTIFY_DATA_CHANGE, object: nil)
             })
         }
+        MessageService.instance.getChannels { (success) in
+            
+        }
     }
 
 }
