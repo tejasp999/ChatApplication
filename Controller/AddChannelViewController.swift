@@ -19,9 +19,17 @@ class AddChannelViewController: UIViewController {
     }    
    
     @IBAction func closeBtnPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func createChannelPressed(_ sender: Any) {
+        guard let channelName = nameText.text, nameText.text != "" else { return }
+        guard let channelDescription = descriptionText.text, descriptionText.text != "" else { return }
+        SocketService.instance.addChannel(channelName: channelName, channelDescription: channelDescription) { (success) in
+            if success{
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     func setUpView(){
         let closeTouch = UITapGestureRecognizer(target: self, action:  #selector(AddChannelViewController.closeKeyBoard(_:)))
