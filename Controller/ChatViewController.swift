@@ -8,14 +8,19 @@
 
 import UIKit
 
-class ChatViewController: UIViewController {
-
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var channelName: UILabel!
     @IBOutlet weak var menuBtn: UIButton!
+    @IBOutlet weak var messagesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         view.bindToKeyboard()
+        messagesTableView.delegate = self
+        messagesTableView.dataSource = self
+        messagesTableView.estimatedRowHeight = 85
+        messagesTableView.rowHeight = UITableViewAutomaticDimension
         let tap = UITapGestureRecognizer(target: self, action: #selector(ChatViewController.handleTap))
         view.addGestureRecognizer(tap)
         //AuthService.instance.isLoggedIn = false
@@ -78,7 +83,9 @@ class ChatViewController: UIViewController {
     func getMessages(){
         guard let channelId = MessageService.instance.selectedChannel?.channelId else {return}
         MessageService.instance.findAllMessagesForChannel(channelID: channelId) { (success) in
-            
+            if success{
+                self.messagesTableView.reloadData()
+            }
         }
     }
 
@@ -92,6 +99,22 @@ class ChatViewController: UIViewController {
                     self.messageTextField.resignFirstResponder()
                 }
             }
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessageService.instance.messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell{
+            cell.configureCell(message: MessageService.instance.messages[indexPath.row])
+            return cell
+        }else{
+            return UITableViewCell()
         }
     }
 }
