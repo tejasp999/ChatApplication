@@ -34,6 +34,7 @@
 		B730D5702036783B00249DE8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B730D56F2036783B00249DE8 /* LoginViewController.swift */; };
 		B78DBC9320427EDE000D7A56 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78DBC9220427EDE000D7A56 /* AuthService.swift */; };
 		B7F6CF9820B644C400984F24 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F6CF9720B644C400984F24 /* Message.swift */; };
+		B7F6CF9A20B650EE00984F24 /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F6CF9920B650EE00984F24 /* KeyboardBoundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		B730D56F2036783B00249DE8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B78DBC9220427EDE000D7A56 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		B7F6CF9720B644C400984F24 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B7F6CF9920B650EE00984F24 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
 		C33BC18CE1B546C85986DE50 /* Pods_SmackApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmackApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -173,6 +175,7 @@
 		B730D56720365F2800249DE8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B7F6CF9920B650EE00984F24 /* KeyboardBoundView.swift */,
 				B730D56D2036680F00249DE8 /* GradientView.swift */,
 				B726228F204D020B008E0BE9 /* RoundedButton.swift */,
 				B719FE25204E2A8C00ACA825 /* AvatarCell.swift */,
@@ -349,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7F6CF9A20B650EE00984F24 /* KeyboardBoundView.swift in Sources */,
 				B7182D2F206AE86600F0F130 /* SocketService.swift in Sources */,
 				B730D5702036783B00249DE8 /* LoginViewController.swift in Sources */,
 				B7182D29206AC8B900F0F130 /* ChannelCell.swift in Sources */,

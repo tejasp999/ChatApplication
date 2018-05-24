@@ -10,10 +10,14 @@ import UIKit
 
 class ChatViewController: UIViewController {
 
+    @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var channelName: UILabel!
     @IBOutlet weak var menuBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.bindToKeyboard()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ChatViewController.handleTap))
+        view.addGestureRecognizer(tap)
         //AuthService.instance.isLoggedIn = false
         if !AuthService.instance.isLoggedIn{
             AuthService.instance.authToken = ""
@@ -33,6 +37,12 @@ class ChatViewController: UIViewController {
             
         }
     }
+    
+    @objc func handleTap(){
+        //Keep in mind this fails some times
+        view.endEditing(true)
+    }
+    
     @objc func dataChanged(_ notif : Notification)  {
         if AuthService.instance.isLoggedIn{
             onLoginGetMessage()
@@ -72,4 +82,16 @@ class ChatViewController: UIViewController {
         }
     }
 
+    @IBAction func sendMessage(_ sender: Any) {
+        if AuthService.instance.isLoggedIn{
+            guard let channelId = MessageService.instance.selectedChannel?.channelId else {return}
+            guard let message = messageTextField.text else {return}
+            SocketService.instance.addMessage(messageBody: message, userId: UserService.instance.id, channelId: channelId) { (success) in
+                if success{
+                    self.messageTextField.text = ""
+                    self.messageTextField.resignFirstResponder()
+                }
+            }
+        }
+    }
 }
