@@ -12,6 +12,7 @@ import SwiftyJSON
 class MessageService {
     static let instance = MessageService()
     var channels = [Channel]()
+    var selectedChannel : Channel?
     func getChannels(completion : @escaping CompletionHandler){
         Alamofire.request(Get_Channels_URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
             if response.result.error == nil{
@@ -26,11 +27,16 @@ class MessageService {
                     }
                     print("the channels are \(self.channels)")
                     completion(true)
+                    NotificationCenter.default.post(name: NOTIFY_CHANNELS_LOADED, object: nil)
                 }
                 
             }else{
                 completion(false)
             }
         }
+    }
+    
+    func clearChannels(){
+        channels.removeAll()
     }
 }

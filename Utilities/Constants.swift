@@ -24,7 +24,10 @@ let placeHolderColor = #colorLiteral(red: 0.2588235294, green: 0.3294117647, blu
 
 //Notifications
 let NOTIFY_DATA_CHANGE = Notification.Name("notifyUserDataChanged")
+let NOTIFY_CHANNELS_LOADED = Notification.Name("notifyChannelsLoaded")
+let NOTIFY_CHANNEL_SELECTED = Notification.Name("notifyChannelSelected")
 
+//Segue Keys
 let CREATE_ACCOUNT = "createAccount"
 let UN_WIND = "unwindToChannelVC"
 
