@@ -9,7 +9,8 @@
 import UIKit
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+    @IBOutlet weak var sendButton: UIButton!
+    var isTyping : Bool = false
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var channelName: UILabel!
     @IBOutlet weak var menuBtn: UIButton!
@@ -33,6 +34,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.dataChanged(_:)), name: NOTIFY_DATA_CHANGE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.channelSelected(_:)), name: NOTIFY_CHANNEL_SELECTED, object: nil)
+        SocketService.instance.getChatMessages { (success) in
+            if success{
+                self.messagesTableView.reloadData()
+                if MessageService.instance.messages.count > 0{
+                    let endIndex = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
+                    self.messagesTableView.scrollToRow(at: endIndex, at: .bottom, animated: true)
+                }
+            }
+        }
+        
         if AuthService.instance.isLoggedIn {
             AuthService.instance.getUserDetails(completion: { (success) in
                 NotificationCenter.default.post(name: NOTIFY_DATA_CHANGE, object: nil)
@@ -43,6 +54,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    @IBAction func MessageBoxEdited(_ sender: Any) {
+        if messageTextField.text == ""{
+            isTyping = false
+            sendButton.isHidden = true
+        }else{
+            if isTyping == false{
+                sendButton.isHidden = false
+            }
+            isTyping = true
+        }
+    }
     @objc func handleTap(){
         //Keep in mind this fails some times
         view.endEditing(true)
@@ -53,6 +75,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             onLoginGetMessage()
         }else{
             channelName.text = "Please Login"
+            self.messagesTableView.reloadData()
         }
     }
     

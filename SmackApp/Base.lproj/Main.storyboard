@@ -86,8 +86,11 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="MessageBoxEdited:" destination="sbh-4m-hWE" eventType="editingChanged" id="Kg6-7s-F8K"/>
+                                </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGQ-19-U6c">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGQ-19-U6c">
                                 <rect key="frame" x="337" y="632" width="30" height="30"/>
                                 <state key="normal" image="send"/>
                                 <connections>
@@ -176,6 +179,7 @@
                         <outlet property="menuBtn" destination="BGw-5R-cc1" id="o1Y-6H-V3x"/>
                         <outlet property="messageTextField" destination="1QJ-J0-qaQ" id="Pab-Mf-pv0"/>
                         <outlet property="messagesTableView" destination="Op7-pi-zKk" id="L7f-eS-9JS"/>
+                        <outlet property="sendButton" destination="NGQ-19-U6c" id="N8n-nA-uvO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6To-go-DNl" userLabel="First Responder" sceneMemberID="firstResponder"/>
