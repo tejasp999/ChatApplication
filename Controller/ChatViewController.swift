@@ -14,6 +14,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var channelName: UILabel!
     @IBOutlet weak var menuBtn: UIButton!
+    @IBOutlet weak var typingLabel: UILabel!
     @IBOutlet weak var messagesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,30 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         }
-        
+        SocketService.instance.getTypingUsers { (typingUsers) in
+            guard let channelId = MessageService.instance.selectedChannel?.channelId else{ return }
+            var names = ""
+            var numberofTypers = 0
+            for (typingUser, channel) in typingUsers{
+                if typingUser != UserService.instance.name && channel == channelId{
+                    if names == ""{
+                        names = typingUser
+                    }else{
+                        names = "\(names),\(typingUser)"
+                    }
+                    numberofTypers += 1
+                }
+            }
+            if numberofTypers > 0 && AuthService.instance.isLoggedIn{
+                var verb = "is"
+                if numberofTypers > 1{
+                    verb = "are"
+                }
+                self.typingLabel.text = "\(names) \(verb) typing a message"
+            }else{
+                self.typingLabel.text = ""
+            }
+        }
         if AuthService.instance.isLoggedIn {
             AuthService.instance.getUserDetails(completion: { (success) in
                 NotificationCenter.default.post(name: NOTIFY_DATA_CHANGE, object: nil)
@@ -55,12 +79,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func MessageBoxEdited(_ sender: Any) {
+        guard let channelId = MessageService.instance.selectedChannel?.channelId else { return }
         if messageTextField.text == ""{
             isTyping = false
             sendButton.isHidden = true
+            SocketService.instance.socket.emit("stopType", UserService.instance.name, channelId)
         }else{
             if isTyping == false{
                 sendButton.isHidden = false
+                SocketService.instance.socket.emit("startType", UserService.instance.name, channelId)
             }
             isTyping = true
         }
@@ -120,6 +147,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if success{
                     self.messageTextField.text = ""
                     self.messageTextField.resignFirstResponder()
+                     SocketService.instance.socket.emit("stopType", UserService.instance.name, channelId)
                 }
             }
         }
