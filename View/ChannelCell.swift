@@ -29,7 +29,7 @@ class ChannelCell: UITableViewCell {
         channelName.text = "#\(String(describing: title))"
         channelName.font = UIFont(name: "Avenir", size: 17)
         for id in MessageService.instance.unreadChannels{
-            if id = channel.channelId{
+            if id == channel.channelId{
                 channelName.font = UIFont(name: "Avenir-Heavy", size: 22)
             }
         }

@@ -68,7 +68,7 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
             MessageService.instance.unreadChannels = MessageService.instance.unreadChannels.filter{$0 != channelData.channelId}
         }
         let index = IndexPath(row: indexPath.row, section: 0)
-        tableView.reloadRows(at: index, with: .none)
+        tableView.reloadRows(at: [index], with: .none)
         tableView.selectRow(at: index, animated: false, scrollPosition: .none)
         NotificationCenter.default.post(name: NOTIFY_CHANNEL_SELECTED, object: nil)
         self.revealViewController().revealToggle(animated: true)
