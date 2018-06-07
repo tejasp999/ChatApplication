@@ -35,8 +35,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.dataChanged(_:)), name: NOTIFY_DATA_CHANGE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.channelSelected(_:)), name: NOTIFY_CHANNEL_SELECTED, object: nil)
-        SocketService.instance.getChatMessages { (success) in
-            if success{
+        SocketService.instance.getChatMessages { (newMessage) in
+            if newMessage.channelId == MessageService.instance.selectedChannel?.channelId && AuthService.instance.isLoggedIn{
+                MessageService.instance.messages.append(newMessage)
                 self.messagesTableView.reloadData()
                 if MessageService.instance.messages.count > 0{
                     let endIndex = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
@@ -44,6 +45,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         }
+//        SocketService.instance.getChatMessages { (success) in
+//            if success{
+//                self.messagesTableView.reloadData()
+//                if MessageService.instance.messages.count > 0{
+//                    let endIndex = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
+//                    self.messagesTableView.scrollToRow(at: endIndex, at: .bottom, animated: true)
+//                }
+//            }
+//        }
         SocketService.instance.getTypingUsers { (typingUsers) in
             guard let channelId = MessageService.instance.selectedChannel?.channelId else{ return }
             var names = ""

@@ -13,6 +13,7 @@ class MessageService {
     static let instance = MessageService()
     var channels = [Channel]()
     var messages = [Message]()
+    var unreadChannels = [String]()
     var selectedChannel : Channel?
     func getChannels(completion : @escaping CompletionHandler){
         Alamofire.request(Get_Channels_URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
