@@ -55,7 +55,7 @@ class AuthService{
     func loginUser(email : String, password : String, completion : @escaping CompletionHandler){
         let lowercasedemail = email.lowercased()
         let body : [String: Any] = ["email":lowercasedemail,"password":password]
-        Alamofire.request(Login_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
+        Alamofire.request(Login_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseString { (response) in
             if response.result.error == nil{
                 print("Inside login")
                 //SwiftyJSON
@@ -63,6 +63,7 @@ class AuthService{
                 let json = JSON(data)
                 self.userEmail = json["user"].stringValue
                 self.authToken = json["token"].stringValue
+                print("The auth token is", self.authToken)
                 //AuthService.instance.authToken = self.authToken
                 self.isLoggedIn = true
                 completion(true)
@@ -86,7 +87,7 @@ class AuthService{
             "avatarColor": avatarColor
         ]
         
-        Alamofire.request(Add_User_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header_data).responseJSON { (response) in
+        Alamofire.request(Add_User_URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header_data).responseString { (response) in
             
             if response.result.error == nil {
                 guard let data = response.data else { return }
@@ -102,7 +103,7 @@ class AuthService{
     
     func getUserDetails(completion: @escaping CompletionHandler){
         print("the user data is \(USER_DATA_URL)\(userEmail)")
-        Alamofire.request("\(USER_DATA_URL)\(userEmail)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
+        Alamofire.request("\(USER_DATA_URL)\(userEmail)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseString { (response) in
             print("the user data inside is",response)
             if response.result.error == nil{
                 guard let data = response.data else {return}

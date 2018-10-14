@@ -16,8 +16,9 @@ class MessageService {
     var unreadChannels = [String]()
     var selectedChannel : Channel?
     func getChannels(completion : @escaping CompletionHandler){
-        Alamofire.request(Get_Channels_URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
+        Alamofire.request(Get_Channels_URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseString { (response) in
             if response.result.error == nil{
+                self.clearChannels()
                 guard let data = response.data else{ return }
                 if let json = try? JSON(data: data).array{
                     for item in json!{
@@ -47,11 +48,12 @@ class MessageService {
     }
     
     func findAllMessagesForChannel(channelID : String, completion : @escaping CompletionHandler){
-        Alamofire.request("\(Get_Messages_URL)\(channelID)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON { (response) in
+        Alamofire.request("\(Get_Messages_URL)\(channelID)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseString { (response) in
             if response.result.error == nil{
                 self.clearMessages()
                 guard let data = response.data else {return}
                 if let json = try? JSON(data: data).array{
+                    print("Inside the message retrieval")
                     for item in json!{
                         let messageBody = item["messageBody"].stringValue
                         let channelId = item["channelId"].stringValue
