@@ -49,11 +49,11 @@ class UserService{
         return color
     }
     func logOutUser(){
-        id = ""
-        avatarColor = ""
-        avatarName = ""
-        email = ""
-        name = ""
+        self.id = ""
+        self.avatarColor = ""
+        self.avatarName = ""
+        self.email = ""
+        self.name = ""
         AuthService.instance.isLoggedIn = false
         AuthService.instance.userEmail = ""
         AuthService.instance.authToken = ""

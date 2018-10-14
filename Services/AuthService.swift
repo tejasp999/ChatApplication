@@ -61,6 +61,7 @@ class AuthService{
                 //SwiftyJSON
                 guard let data = response.data else { return }
                 let json = JSON(data)
+                print("the json in login is",json)
                 self.userEmail = json["user"].stringValue
                 self.authToken = json["token"].stringValue
                 print("The auth token is", self.authToken)
@@ -116,6 +117,7 @@ class AuthService{
     }
     func setUserData(data: Data){
         let json = JSON(data)
+        print("The json data is",json)
         let id = json["_id"].stringValue
         let name = json["name"].stringValue
         let color = json["avatarColor"].stringValue
